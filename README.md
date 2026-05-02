@@ -1,6 +1,6 @@
 # Política de privacidad — **WhatsX Business**
 
-**Última actualización:** 22 de abril de 2026  
+**Última actualización:** 1 de mayo de 2026
 
 **Responsable del tratamiento:** Datia Tech  
 **Contacto (consultas de privacidad):** hola@datia.dev 
@@ -26,9 +26,12 @@ Pueden incluirse, según el uso que hagas de la app:
 | **Identificadores de contacto** | Números de teléfono normalizados (y nombres asociados) que se detectan desde la pestaña de WhatsApp Web o que introduc/tú; sirven para vincular la ficha del cliente con el chat. |
 | **Datos de perfil comercial** | Nombre del cliente, etiquetas (p. ej. lead, cliente, VIP), notas que escribas, registro de compras e importes, pedidos, fechas, formas de pago, estados, etc. |
 | **Recordatorios** | Fecha, hora, mensaje y vínculo con un cliente, para mostrarte avisos y el listado de seguimientos. |
+| **Métricas de uso (opcional)** | Si activás la analítica en la página de opciones de la extensión: eventos de uso del panel (p. ej. apertura del panel, interacción con secciones o funciones) y parámetros no sensibles; se envían a **Google Analytics 4** mediante el **Measurement Protocol** según la configuración que guardes. No forman parte del CRM “de negocio” (clientes, pedidos, etc.). |
 | **Identificadores técnicos internos** | Id de alarmas, claves de almacenamiento local, etc., solo para el funcionamiento técnico de la extensión. |
 
-**No** utilizamos estos datos para publicidad dirigida, perfiles de comportamiento comercial en servidores del desarrollador, ni “analítica” de terceros en nombre de **WhatsX Business**. La extensión **no envía** tus notas, clientes ni conversaciones a un **servidor propio** de la extensión.
+No utilizamos los datos del CRM descritos en la tabla para publicidad dirigida ni para construir perfiles comerciales en **servidores propios** del desarrollador: **WhatsX Business no opera un backend** que reciba tus notas, fichas de clientes ni el contenido de tus conversaciones para almacenarlos o analizarlos en nuestros servidores.
+
+De forma **opcional**, y **solo si vos lo activás** en los ajustes de la extensión (página de opciones / analítica), pueden enviarse a **Google LLC** métricas de **uso agregado** del panel mediante **Google Analytics 4** y el **Measurement Protocol**. El diseño actual de la extensión **no prevé** incluir en esos eventos el texto de los chats de WhatsApp, el contenido de las notas del CRM ni datos identificativos de clientes como parte del payload de analítica. Podés **desactivar** el envío en cualquier momento desde la misma página de opciones o borrando los datos de la extensión. El tratamiento por parte de Google se rige por la [Política de privacidad de Google](https://policies.google.com/privacy) y la documentación de [Google Analytics / Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/ga4).
 
 ---
 
@@ -43,7 +46,11 @@ Los datos se guardan en las APIs del navegador, **en el equipo o perfil** donde 
 
 El tratamiento vinculado a **cuenta de Google** (sync, inicio de sesión en Chrome) rige la [Política de privacidad de Google](https://policies.google.com/privacy) y la configuración de sync en tu navegador.
 
-**La extensión no incorpora, en el estado actual del código, llamadas a APIs externas nuestre para almacenar o analizar el contenido de tu CRM.** Al abrir enlaces, el navegador puede cargar **web.whatsapp.com** según el uso (por ejemplo, al pulsar en una notificación o abrir un chat), sometido a las reglas de Meta/WhatsApp y del propio sitio.
+**No hay un servicio propio del desarrollador** al que la extensión envíe el contenido de tu CRM para almacenarlo o analizarlo en nuestros servidores. Aparte de la carga normal de **WhatsApp Web** y de los sitios que abras voluntariamente en el navegador, la extensión puede realizar solicitudes HTTPS a **`https://www.google-analytics.com/`** **únicamente** cuando **tengas activada** la analítica opcional y exista un envío de eventos configurado.
+
+Si configurás GA4, los valores que introduzcas (p. ej. identificador de medición y secreto de API) se guardan en **`chrome.storage.local`** en tu dispositivo; solo se usan para contactar con los endpoints de Google Analytics según esa configuración.
+
+Al abrir enlaces, el navegador puede cargar **web.whatsapp.com** según el uso (por ejemplo, al pulsar en una notificación o abrir un chat), sometido a las reglas de Meta/WhatsApp y del propio sitio.
 
 ---
 
@@ -55,7 +62,9 @@ Para detectar el **chat activo** (p. ej. título o número, según la UI de What
 
 ## 5. Permisos del navegador (resumen)
 
-La extensión solicita permisos de Chrome para: panel lateral, almacenamiento, alarmas, notificaciones, pestañas, `scripting` (inyectar o comprobar el content script en WhatsApp Web) y, cuando procede, uso de `windows` u otros que figuren en el `manifest.json` publicado. Cada permiso se usa con **finalidades operativas** (mostrar el panel, guardar datos, avisar recordatorios, conectar con la pestaña de WhatsApp). La lista exacta actual aparece en la ficha de la extensión en el momento de la instalación.
+La extensión solicita permisos de Chrome para: **panel lateral** (`sidePanel`), **almacenamiento** (`storage`), **alarmas** (`alarms`), **notificaciones** (`notifications`), **pestañas** (`tabs`), **`scripting`** (inyectar o comprobar el content script en WhatsApp Web), **`windows`**, **`clipboardWrite`** (copiar al portapapeles texto que elijas —por ejemplo plantillas— para pegarlo de forma fiable en el cuadro de mensaje de WhatsApp Web) y **permisos de host** hacia **`https://web.whatsapp.com/*`** y, solo para la analítica opcional, hacia **`https://www.google-analytics.com/*`**.
+
+Cada permiso se usa con **finalidades operativas** descritas en esta política. La lista exacta vigente aparece en el `manifest.json` publicado y en la ficha de la extensión en el momento de la instalación.
 
 ---
 
@@ -91,6 +100,8 @@ Según el lugar de residencia, podrás ejercer derechos de acceso, rectificació
 ## 10. Cambios
 
 Podemos actualizar esta política. La **“Última actualización”** en la cabecera indicará la versión reciente. Los cambios sustantivos conviene revisarlos en esta misma URL que publiques (por ejemplo, en el repositorio, sitio web o hosting estático vinculado a la ficha de la tienda de extensiones).
+
+La versión de **1 de mayo de 2026** incorpora la descripción de la **analítica opcional (Google Analytics 4)**, del permiso **`clipboardWrite`** y del acceso de red a **Google Analytics**, alineada con el comportamiento publicado de la extensión.
 
 ---
 
